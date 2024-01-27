@@ -33,7 +33,14 @@ public class BoardPanel extends JPanel {
         TilePanel temp = null;
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
-                temp = new TilePanel(this.screenUnit, ((offset+i+j)%2 == 0)?Color.WHITE:Color.BLACK);
+                Color background = ((offset+i+j)%2 == 0)?Color.WHITE:Color.BLACK;
+                Color foreground = (background==Color.BLACK)?Color.WHITE:Color.BLACK;
+                temp = new TilePanel(
+                        this.screenUnit,
+                        background,
+                        new TileCode(i, j, whiteView),
+                        foreground
+                );
                 boardTiles[i][j] = temp;
             }
         }

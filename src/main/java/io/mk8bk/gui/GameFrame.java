@@ -36,7 +36,7 @@ public class GameFrame extends JFrame {
         this.setLayout(new BorderLayout(5, 5));
         this.add(this.boardPanel, BorderLayout.CENTER);
         this.add(this.messagePanel, BorderLayout.EAST);
-        this.add(this.movesPanel, BorderLayout.SOUTH);
+        this.add(this.movesPanel, BorderLayout.NORTH);
 
         // displaying the window
         this.pack();

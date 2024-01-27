@@ -7,9 +7,9 @@ public class MovesPanel extends JPanel {
     private final int screenUnit;
     public MovesPanel(int screenUnit){
         this.screenUnit = screenUnit;
-        this.setPreferredSize(new Dimension(screenUnit*8,screenUnit*2));
-        this.setBackground(Color.RED);
-        this.setOpaque(true);
+        this.setPreferredSize(new Dimension(screenUnit*8,screenUnit));
+//        this.setBackground(Color.RED);
+//        this.setOpaque(true);
     }
 
 }
