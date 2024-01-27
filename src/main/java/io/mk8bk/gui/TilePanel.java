@@ -52,12 +52,15 @@ public class TilePanel extends JPanel {
             throw new EmptyTileException(this.tileCode);
         PiecePanel tmp = piecePanel;
         this.piecePanel = null;
+        this.centerPanel.remove(0);
         return tmp;
     }
 
     public void addPiecePanel(PiecePanel piecePanel) throws NonEmptyTileException {
-        if(this.piecePanel != null)
+        if(this.piecePanel != null){
             throw new NonEmptyTileException(this.tileCode);
+        }
+        this.piecePanel = piecePanel;
         this.centerPanel.add(piecePanel);
     }
 

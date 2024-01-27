@@ -10,16 +10,16 @@ public class TileCode {
     public TileCode(int rowIndex, int columnIndex, boolean whiteView){
         this.whiteView = whiteView;
         if(whiteView){
-            this.row = rowIndex+1;
-            this.rowIndex = rowIndex;
-            this.columnIndex = columnIndex;
-            this.column = (char)(-columnIndex+(int)'h');
-            this.tileCode = String.valueOf(column)+row;
-        }else{
             this.row = 8-rowIndex;
             this.rowIndex = rowIndex;
             this.columnIndex = columnIndex;
             this.column = (char)(columnIndex+(int)'a');
+            this.tileCode = String.valueOf(column)+row;
+        }else{
+            this.row = rowIndex+1;
+            this.rowIndex = rowIndex;
+            this.columnIndex = columnIndex;
+            this.column = (char)(-columnIndex+(int)'h');
             this.tileCode = String.valueOf(column)+row;
         }
     }

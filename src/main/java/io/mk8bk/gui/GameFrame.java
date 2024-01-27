@@ -9,6 +9,7 @@ public class GameFrame extends JFrame {
     // window width and height
     private final int width;
     private final int height;
+    private boolean myTurn;
 
     // main panels
     private final BoardPanel boardPanel;
@@ -16,6 +17,8 @@ public class GameFrame extends JFrame {
     private final MovesPanel movesPanel;
 
     public GameFrame(boolean whiteView) {
+        myTurn = whiteView;
+
         // get screen dimensions
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         float scale = .95f;
