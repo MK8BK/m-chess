@@ -1,6 +1,6 @@
 package io.mk8bk.gui;
 
-import io.mk8bk.commons.Move;
+import io.mk8bk.commons.ChessAction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,7 +48,7 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
     }
 
-    public void applyOpponentMove(Move move){
-        boardPanel.applyOpponentMove(move);
+    public void applyOpponentMove(ChessAction chessAction){
+        boardPanel.applyOpponentMove(chessAction);
     }
 }

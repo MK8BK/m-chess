@@ -1,7 +1,7 @@
 package io.mk8bk.gui;
 
+import io.mk8bk.commons.ChessAction;
 import io.mk8bk.commons.ChessColor;
-import io.mk8bk.commons.Move;
 import io.mk8bk.commons.PieceType;
 
 import javax.swing.*;
@@ -132,7 +132,7 @@ public class BoardPanel extends JPanel {
         }
     }
 
-    public void applyOpponentMove(Move move) {
+    public void applyOpponentMove(ChessAction chessAction) {
 
     }
 }

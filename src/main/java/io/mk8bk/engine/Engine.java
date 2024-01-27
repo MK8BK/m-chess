@@ -1,14 +1,14 @@
 package io.mk8bk.engine;
 
-import io.mk8bk.commons.Move;
+import io.mk8bk.commons.ChessAction;
 
 public class Engine {
-    private Move[] availableMoves;
-    public Move[] getAvailableMoves(){
+    private ChessAction[] availableChessActions;
+    public ChessAction[] getAvailableMoves(){
         return null;
     }
 
-    public void applyMove(Move move) throws InvalidMoveException {
+    public void applyMove(ChessAction chessAction) throws InvalidMoveException {
 
     }
 }

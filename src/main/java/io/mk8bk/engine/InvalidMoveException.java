@@ -1,13 +1,13 @@
 package io.mk8bk.engine;
 
-import io.mk8bk.commons.Move;
+import io.mk8bk.commons.ChessAction;
 
 public class InvalidMoveException extends IllegalArgumentException{
     public InvalidMoveException(){
-        super("Move is not allowed.");
+        super("ChessAction is not allowed.");
     }
-    public InvalidMoveException(Move move){
-        super("Move %s is not allowed.".formatted(move.toString()));
+    public InvalidMoveException(ChessAction chessAction){
+        super("ChessAction %s is not allowed.".formatted(chessAction.toString()));
     }
 
 }
