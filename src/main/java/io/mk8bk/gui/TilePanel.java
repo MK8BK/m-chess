@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class TilePanel extends JPanel {
     private final int screenUnit;
+    private final int pieceScreenUnit;
     private final JPanel centerPanel;
     private PiecePanel piecePanel;
 
@@ -14,25 +15,28 @@ public class TilePanel extends JPanel {
     private final Color textColor;
     private final TileCode tileCode;
     private final JPanel codePanel;
-    public TilePanel(int screenUnit, Color tileColor, TileCode tileCode, Color textColor) {
+    public TilePanel(int screenUnit, int pieceScreenUnit, Color tileColor, Color textColor, TileCode tileCode) {
         this.screenUnit = screenUnit;
         this.tileColor = tileColor;
         this.textColor = textColor;
         this.tileCode = tileCode;
-        int centerUnit = (int)(screenUnit*0.8);
+        this.pieceScreenUnit = pieceScreenUnit;
+        int codeLabelHeight = (screenUnit-pieceScreenUnit)/2;
 
-//        JPanel topPanel = new JPanel();
-//        topPanel.add(new JLabel());
-//        topPanel.setPreferredSize(new Dimension(screenUnit, (screenUnit-centerUnit)/3));
-//        this.add(topPanel, BorderLayout.NORTH);
+        // just used to center centerPanel
+        JPanel topPanel = new JPanel();
+        topPanel.add(new JLabel());
+        topPanel.setPreferredSize(new Dimension(screenUnit, codeLabelHeight));
+        topPanel.setOpaque(false);
+        this.add(topPanel, BorderLayout.NORTH);
 
         centerPanel = new JPanel();
-        centerPanel.setPreferredSize(new Dimension(centerUnit,centerUnit));
+        centerPanel.setPreferredSize(new Dimension(pieceScreenUnit,pieceScreenUnit));
         centerPanel.setOpaque(false);
         this.add(centerPanel, BorderLayout.CENTER);
 
         codePanel = new JPanel();
-        codePanel.setPreferredSize(new Dimension(screenUnit, (screenUnit-centerUnit)/2));
+        codePanel.setPreferredSize(new Dimension(screenUnit, codeLabelHeight));
         JLabel codeLabel = new JLabel(tileCode.getTileCode());
         codeLabel.setForeground(textColor);
         codePanel.add(codeLabel);
