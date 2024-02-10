@@ -1,0 +1,24 @@
+.title, .description{
+    text-align: center;
+}
+
+.board{
+    width: 800px;
+    display: grid;
+    margin: auto;
+    border: 2px solid black;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+}
+
+.white-tile{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
+
+.black-tile{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}
