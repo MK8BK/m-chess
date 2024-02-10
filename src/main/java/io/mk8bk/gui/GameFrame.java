@@ -1,6 +1,6 @@
 package io.mk8bk.gui;
 
-import io.mk8bk.commons.ChessAction;
+import io.mk8bk.commons.actions.ChessAction;
 
 import javax.swing.*;
 import java.awt.*;

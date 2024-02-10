@@ -1,8 +1,8 @@
 package io.mk8bk.gui;
 
-import io.mk8bk.commons.ChessAction;
+import io.mk8bk.commons.actions.ChessAction;
 import io.mk8bk.commons.ChessColor;
-import io.mk8bk.commons.PieceType;
+import io.mk8bk.commons.pieces.PieceType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +23,7 @@ public class BoardPanel extends JPanel {
 
         boardTiles = new TilePanel[8][8];
         initTiles();
+        this.boardTiles[1][2].highlight(true);
         initPieces();
 
         this.setLayout(new GridLayout(8,8));
@@ -130,6 +131,7 @@ public class BoardPanel extends JPanel {
                 boardTiles[i][j] = temp;
             }
         }
+
     }
 
     public void applyOpponentMove(ChessAction chessAction) {

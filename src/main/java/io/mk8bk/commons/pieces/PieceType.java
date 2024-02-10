@@ -1,4 +1,4 @@
-package io.mk8bk.commons;
+package io.mk8bk.commons.pieces;
 
 public enum PieceType {
     KING('K', "king"),

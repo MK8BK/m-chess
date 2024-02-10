@@ -1,14 +1,12 @@
 package io.mk8bk.gui;
 
-import io.mk8bk.commons.PieceType;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class TilePanel extends JPanel {
     private final int screenUnit;
     private final int pieceScreenUnit;
-    private final JPanel centerPanel;
+    private final CenterTilePanel centerPanel;
     private PiecePanel piecePanel;
 
     private final Color tileColor;
@@ -30,9 +28,7 @@ public class TilePanel extends JPanel {
         topPanel.setOpaque(false);
         this.add(topPanel, BorderLayout.NORTH);
 
-        centerPanel = new JPanel();
-        centerPanel.setPreferredSize(new Dimension(pieceScreenUnit,pieceScreenUnit));
-        centerPanel.setOpaque(false);
+        centerPanel = new CenterTilePanel(pieceScreenUnit);
         this.add(centerPanel, BorderLayout.CENTER);
 
         codePanel = new JPanel();
@@ -64,4 +60,7 @@ public class TilePanel extends JPanel {
         this.centerPanel.add(piecePanel);
     }
 
+    public void highlight(boolean b){
+        this.centerPanel.setHighlight(b);
+    }
 }

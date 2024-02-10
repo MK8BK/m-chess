@@ -1,7 +1,7 @@
 package io.mk8bk.gui;
 
 import io.mk8bk.commons.ChessColor;
-import io.mk8bk.commons.PieceType;
+import io.mk8bk.commons.pieces.PieceType;
 
 import javax.swing.*;
 import java.awt.*;
