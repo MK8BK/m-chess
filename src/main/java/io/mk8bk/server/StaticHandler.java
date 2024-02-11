@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.util.Objects;
 
 public class StaticHandler implements HttpHandler {
+
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         if(!Objects.equals(exchange.getRequestMethod(), "GET")){
@@ -24,7 +25,7 @@ public class StaticHandler implements HttpHandler {
         URI resourceURI = exchange.getRequestURI();
         String resourcePath = resourceURI.getPath().substring(7); // "/static/[rest]"
 
-        System.out.println("\tHandling request for "+resourceURI+".");
+        System.out.println("  Handling request for "+resourceURI+".");
 
         // load resource
         byte[] encodedResource = loadResource(resourcePath);
@@ -33,7 +34,6 @@ public class StaticHandler implements HttpHandler {
         Headers headers = exchange.getResponseHeaders();
         String mimetype = URLConnection.guessContentTypeFromName(resourcePath);
         headers.add("content-type",mimetype); // +";charset=UTF-8"
-        // set cookies
 
         // send headers
         long responseLength = encodedResource.length;

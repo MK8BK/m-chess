@@ -5,9 +5,6 @@ import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class ChessWebServer {
     private static ChessWebServer chessWebServer = ChessWebServer.getInstance();
 
@@ -42,8 +39,13 @@ public class ChessWebServer {
 
         staticHandler = new StaticHandler();
         pollingHandler = new PollingHandler();
-        httpServer.createContext("/static/", staticHandler);
-        httpServer.createContext("/poll/", staticHandler);
+
+        HttpContext staticContext = httpServer.createContext("/static/", staticHandler);
+        HttpContext pollContext = httpServer.createContext("/poll/", staticHandler);
+        ChessAuthenticator staticChessAuthenticator = new ChessAuthenticator("static/");
+        ChessAuthenticator pollingChessAuthenticator = new ChessAuthenticator("polling/");
+        staticContext.setAuthenticator(staticChessAuthenticator);
+        pollContext.setAuthenticator(pollingChessAuthenticator);
     }
 
     public void start(){
