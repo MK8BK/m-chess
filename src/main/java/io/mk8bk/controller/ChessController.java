@@ -12,6 +12,7 @@ public class ChessController {
 
     public ChessController() {
         chessWebServer = ChessWebServer.getInstance();
+        chessWebServer.registerController(this);
         chessEngine = ChessEngine.getInstance();
         blackPlayer = new ChessPlayer(ChessColor.BLACK);
         whitePlayer = new ChessPlayer(ChessColor.WHITE);

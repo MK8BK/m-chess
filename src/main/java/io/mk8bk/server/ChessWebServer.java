@@ -2,11 +2,13 @@ package io.mk8bk.server;
 
 import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpServer;
+import io.mk8bk.controller.ChessController;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 public class ChessWebServer {
     private static ChessWebServer chessWebServer = ChessWebServer.getInstance();
+    private ChessController controller;
 
     public static ChessWebServer getInstance() {
         if(ChessWebServer.chessWebServer == null)
@@ -41,7 +43,7 @@ public class ChessWebServer {
         pollingHandler = new PollingHandler();
 
         HttpContext staticContext = httpServer.createContext("/static/", staticHandler);
-        HttpContext pollContext = httpServer.createContext("/poll/", staticHandler);
+        HttpContext pollContext = httpServer.createContext("/poll/", pollingHandler);
         ChessAuthenticator staticChessAuthenticator = new ChessAuthenticator("static/");
         ChessAuthenticator pollingChessAuthenticator = new ChessAuthenticator("polling/");
         staticContext.setAuthenticator(staticChessAuthenticator);
@@ -55,5 +57,15 @@ public class ChessWebServer {
         httpServer.start();
         System.out.println("Chess server started successfully.");
         System.out.println("Visit "+link+" to start playing.");
+    }
+
+    public void registerController(ChessController chessController) {
+        if(controller == null){
+            this.controller = chessController;
+            this.pollingHandler.registerController(controller);
+        }
+
+        else
+            throw new RuntimeException("Controller already set");
     }
 }
