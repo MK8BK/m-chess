@@ -2,13 +2,9 @@ package io.mk8bk.server;
 
 
 import com.sun.net.httpserver.BasicAuthenticator;
-import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
+import io.mk8bk.controller.ChessController;
 
-import java.net.HttpURLConnection;
-import java.net.URLConnection;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.Objects;
 
 import static java.lang.Math.max;

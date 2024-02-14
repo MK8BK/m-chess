@@ -1,4 +1,4 @@
-package io.mk8bk.commons.actions;
+package io.mk8bk.engine.actions;
 
 public enum ChessActionType {
     MOVE(),

@@ -44,8 +44,8 @@ public class ChessWebServer {
 
         HttpContext staticContext = httpServer.createContext("/static/", staticHandler);
         HttpContext pollContext = httpServer.createContext("/poll/", pollingHandler);
-        ChessAuthenticator staticChessAuthenticator = new ChessAuthenticator("static/");
-        ChessAuthenticator pollingChessAuthenticator = new ChessAuthenticator("polling/");
+        ChessAuthenticator staticChessAuthenticator = new ChessAuthenticator("enterprise_fucker/");
+        ChessAuthenticator pollingChessAuthenticator = new ChessAuthenticator("enterprise_fucker/");
         staticContext.setAuthenticator(staticChessAuthenticator);
         pollContext.setAuthenticator(pollingChessAuthenticator);
     }
