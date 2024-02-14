@@ -1,6 +1,7 @@
 package io.mk8bk.controller;
 
 import io.mk8bk.commons.ChessColor;
+import io.mk8bk.commons.pojos.BoardState;
 import io.mk8bk.engine.ChessEngine;
 import io.mk8bk.server.ChessWebServer;
 
@@ -60,5 +61,9 @@ public class ChessController {
             throw new RuntimeException("Unregistered user got past authentication.");
         }
         return Objects.isNull(player.getColor()) && Objects.isNull(otherPlayer.getColor());
+    }
+
+    public BoardState getBoardState() {
+        return null;
     }
 }

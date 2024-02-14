@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.*;
 import io.mk8bk.commons.ChessColor;
+import io.mk8bk.commons.pojos.BoardState;
 import io.mk8bk.controller.ChessController;
 
 import java.io.IOException;
@@ -28,6 +29,7 @@ public class PollingHandler implements HttpHandler {
         // only accept json
         if(!Objects.equals(contentType, "application/json")){
             exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, 0);
+            return;
         }
 
         JsonNode requestJson = objectMapper.readTree(exchange.getRequestBody());
@@ -50,6 +52,10 @@ public class PollingHandler implements HttpHandler {
                 }
                 controller.setUserColor(username, chessColor);
                 return;
+            }else{
+                byte[] response = "color-choice attribute must be json string".getBytes();
+                exchange.sendResponseHeaders(HttpURLConnection.HTTP_BAD_REQUEST, response.length);
+                return;
             }
         }
 
@@ -64,8 +70,14 @@ public class PollingHandler implements HttpHandler {
             }
         }
 
-    }
+        // else player has a color
+        if(requestJson.has("request-board-state")){
+            BoardState state = controller.getBoardState();
 
+        }
+
+
+    }
 
     private void handleUserPoll(HttpExchange exchange) {
         try {
@@ -78,10 +90,6 @@ public class PollingHandler implements HttpHandler {
 
 
     }
-
-    private void sendChessRoleUI(HttpExchange exchange) {
-    }
-
 
     public void registerController(ChessController controller) {
         if(this.controller == null){
